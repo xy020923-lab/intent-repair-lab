@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intent Repair Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p class="eyebrow">INTERACTIVE CUSTOMER SERVICE PROTOTYPE</p>
+      <h1>Intent Repair Lab</h1>
+      <p>Compare how a customer-service assistant recovers when a request about a refund is ambiguous.</p>
+    </header>
+    <section class="setup" aria-label="Demo settings">
+      <div><label for="scenario">Customer task</label><select id="scenario"><option value="status">Check an existing refund</option><option value="request">Request a new refund</option><option value="other">Something outside the options</option></select></div>
+      <div><label for="mode">Repair approach</label><select id="mode"><option value="targeted">Targeted confirmation</option><option value="open">Open-ended question</option></select></div>
+      <button id="start" type="button">Start / reset</button>
+    </section>
+    <div class="grid">
+      <section class="panel chatpanel" aria-label="Conversation">
+        <div class="panelhead"><h2>Conversation</h2><span class="badge">Simulation · no real account access</span></div>
+        <div id="chat" class="chat" aria-live="polite"></div>
+        <div id="choices" class="choices" aria-label="Available replies"></div>
+        <form id="messageForm"><label for="message">Your message</label><div class="entry"><input id="message" autocomplete="off" placeholder="Type a customer request"><button type="submit">Send</button></div></form>
+      </section>
+      <aside class="panel insight" aria-label="Development evidence">
+        <h2>What the prototype is doing</h2>
+        <p id="stage">Choose a task and start.</p>
+        <dl><dt>Repeated explanations</dt><dd id="repeats">0</dd><dt>Clarification turns</dt><dd id="turns">0</dd><dt>Original task completed</dt><dd id="completed">No</dd></dl>
+        <h3>Decision trace</h3><ol id="trace"></ol>
+        <p class="note">The rules and order records are local, invented test data. The trace exposes the simulated intent decision; it is not a trained AI model or an actual refund service.</p>
+      </aside>
+    </div>
+    <footer>Try all three tasks in both approaches. Use “Something else” to correct the assistant when its choices miss your goal.</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
